@@ -23,6 +23,12 @@ let polishes = [
         finish: 'Holographic',
     },
 
+    {
+        name: 'Midnight Drive',
+        brand: 'Mooncat',
+        colorFamily: 'Purple',
+        finish: 'Creme',
+    },
 ];
 
 // Get Requests
