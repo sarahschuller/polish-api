@@ -46,10 +46,6 @@ app.get('/', (req, res) => {
     res.send('Welcome to my polish library!')
 });
 
-app.get('/secreturl', (req, res) => {
-    res.send('This is a secret url with super top-secret content');
-});
-
 app.get('/documentation', (req, res) => {
     res.sendFile('publish/documentation.html', { root: __dirname});
 });
