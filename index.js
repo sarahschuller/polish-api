@@ -4,6 +4,8 @@ const morgan = require("morgan");
      path = require('path');
 const app = express();
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
+const bodyParser = require('body-parser'),
+    methodOverride = require('method-override');
 
 let polishes = [
     {
@@ -38,8 +40,10 @@ let polishes = [
 // initialize morgan and set up logger
 app.use(morgan('combined', {stream: accessLogStream}));
 
-// Get Requests
+// Route all requests for static files to their corresponding files within the public folder
+app.use(express.static('public'));
 
+// Get Requests
 app.get('/', (req, res) => {
     res.send('Welcome to my polish library!')
 });
@@ -54,6 +58,18 @@ app.get('/documentation', (req, res) => {
 
 app.get('/polish', (req, res) => {
     res.json(polishes);
+});
+
+// Error Handling Middleware
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+app.use(methodOverride());
+
+app.use((err, req, res, next) => {
+    // logic here
 });
 
 // listening for requests
