@@ -4,8 +4,6 @@ const morgan = require("morgan");
      path = require('path');
 const app = express();
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
-const bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
 
 let polishes = [
     {
@@ -59,14 +57,6 @@ app.get('/documentation', (req, res) => {
 app.get('/polish', (req, res) => {
     res.json(polishes);
 });
-
-// Error Handling Middleware
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.use(bodyParser.json());
-app.use(methodOverride());
 
 app.use((err, req, res, next) => {
     // logic here
