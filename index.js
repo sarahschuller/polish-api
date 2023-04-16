@@ -35,4 +35,17 @@ let polishes = [
 
 app.get('/', (req, res) => {
     res.send('Welcome to my polish library!')
-})
+});
+
+app.get('/documentation', (req, res) => {
+    res.sendFile('publish/documentation.html', { root: __dirname});
+});
+
+app.get('/polish', (req, res) => {
+    res.json(polishes);
+});
+
+// listening for requests
+app.listen(8080, () => {
+    console.log('The app is listening on port 8080');
+});
