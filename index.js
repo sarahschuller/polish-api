@@ -1,5 +1,9 @@
-const express = require("express"); 
+const express = require("express");
+const morgan = require("morgan");
+     fs = require('fs'),
+     path = require('path');
 const app = express();
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 
 let polishes = [
     {
@@ -31,10 +35,17 @@ let polishes = [
     },
 ];
 
+// initialize morgan and set up logger
+app.use(morgan('combined', {stream: accessLogStream}));
+
 // Get Requests
 
 app.get('/', (req, res) => {
     res.send('Welcome to my polish library!')
+});
+
+app.get('/secreturl', (req, res) => {
+    res.send('This is a secret url with super top-secret content');
 });
 
 app.get('/documentation', (req, res) => {
