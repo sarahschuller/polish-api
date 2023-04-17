@@ -32,16 +32,16 @@
     <tr>
       <td>Return data about polishes by color family</td>
       <td>GET</td>
-      <td>/genre/:title</td>
-      <td>A JSON object with data (description, genre, genre description, director, director bio, director birth, director death, imagepath, featured) about a single movie by title</td>
-      <td>Example</td>
+      <td>/colorfamlies</td>
+      <td>An array of polishes by color family as a JSON object</td>
+      <td>N/A</td>
       <td>N/A</td>
     </tr>
     <tr>
-      <td>Return data about polishes by genre</td>
+      <td>Return data about polishes by finish</td>
       <td>GET</td>
-      <td>/genres</td>
-      <td>An array of polishes by genre as a JSON object</td>
+      <td>/finishes</td>
+      <td>An array of polishes by finish as a JSON object</td>
       <td>N/A</td>
       <td>N/A</td>
     </tr>
@@ -62,20 +62,36 @@
       <td>User information has been updated</td>
     </tr>
     <tr>
-      <td>Allow users to add a movie to their favorites list</td>
+      <td>Allow users to add a polish to their favorites list</td>
       <td>POST</td>
-      <td>/users/:username/polishes/:movieId</td>
+      <td>/users/:username/polishes/:polishId</td>
       <td>Create a JSON object with data about a user's favorite polishes</td>
       <td>N/A</td>
-      <td>Movie has been added to user favorites</td>
+      <td>polish has been added to user favorites</td>
     </tr>
     <tr>
       <td>Allow users to remove polishes from their favorites list</td>
       <td>DELETE</td>
-      <td>/users/:username/polishes/:movieId</td>
+      <td>/users/:username/polishes/:polishId</td>
       <td>Removes an item from the JSON object with the user's list of favorite polishes</td>
       <td>N/A</td>
-      <td>Movie has been removed from favorites</td>
+      <td>polish has been removed from favorites</td>
+    </tr>
+    <tr>
+      <td>Allow users to add a polish to their wishlist</td>
+      <td>POST</td>
+      <td>/users/:username/polishes/:polishId</td>
+      <td>Create a JSON object with data about a user's wishlist polishes</td>
+      <td>N/A</td>
+      <td>polish has been added to user wishlist</td>
+    </tr>
+    <tr>
+      <td>Allow users to remove polishes from their wishlist</td>
+      <td>DELETE</td>
+      <td>/users/:username/polishes/:polishId</td>
+      <td>Removes an item from the JSON object with the user's list of wishlist polishes</td>
+      <td>N/A</td>
+      <td>polish has been removed from wishlist</td>
     </tr>
     <tr>
       <td>Allow current users to delete their registration</td>
